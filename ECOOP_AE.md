@@ -100,6 +100,24 @@ We have already submitted as in the DART documentation, and publicly available a
 
 ## Reusable Badge
 
+Usage: python run_single.py <image_index> <eps> [verifier] [option] [approx] [timeout]
+
+Our experiments are now on supported with MNIST, CIFAR10 Dataset, with MnistL2, L4, L6 model, and [OVAL21](https://github.com/oval-group/oval-bab)
+
+    - The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. 
+
+    - The CIFAR-10 dataset (Canadian Institute for Advanced Research, 10 classes) is a subset of the Tiny Images dataset and consists of 60000 color images. The images are labelled with one of 10 mutually exclusive classes: airplane, automobile (but not truck or pickup truck), bird, cat, deer, dog, frog, horse, ship, and truck (but not pickup truck).  
+
+MNIST_L2, MNIST_L4, and MNIST_L6 models are feed-forward and fully connect model, containing 512, 1024, 2048 neurons within 2, 4, and 6 layers. 
+
+OVAL21 models are 3 ReLU-based convolutional networks which supplied by OVAL Team from VNNComp. 
+
+We extend the model by [weight pruning](derived from https://github.com/uiuc-arc/FANC/blob/main/proof_transfer/approximate.py)
+
+### We can set with GR/SA for our Oliva^GR(Greedy) and Oliva^SA(simulated annealing) mode, with different dataset (mnist, cifar) for all of images in the testing set.
+
+- Our tool can be reused by located the open-sourced <image_index>, by different epsilon <eps> with different extend of the network pruning under a configurable timeout.
+  
 ```
 python run_single.py 61 0.0392156862745098 GR mnistL2 0 10
 ```
