@@ -1,0 +1,22 @@
+# Configuration file for running the mnist_fc benchmark (small model).
+general:
+  root_path: /home/guanqizh/Data/oopsla25supplements/vnncomp2021/benchmarks/mnistfc
+  csv_name: mnistL2_instances.csv
+  complete_verifier: bab-refine
+model:
+  input_shape: [-1, 1, 28, 28]  # This onnx model has input shape [-1, 784] which is not compatible with our MIP solution
+data:
+  start: 0
+  end: 100
+solver:
+  batch_size: 1
+  beta-crown:
+    iteration: 20
+    lr_beta: 0.03
+    enable_opt_interm_bounds: True
+bab:
+  branching:
+    candidates: 5
+    reduceop: max
+attack:
+  pgd_order: skip

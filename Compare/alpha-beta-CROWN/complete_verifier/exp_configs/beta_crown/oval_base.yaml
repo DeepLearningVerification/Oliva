@@ -1,0 +1,18 @@
+general:
+  # enable_incomplete_verification: False
+  root_path: ../../vnncomp2021/benchmarks/oval21  # Please update this path to point to the VNN-COMP 2022 repo
+  csv_name: oval21_base_instances.csv
+  conv_mode: matrix
+
+attack:
+  pgd_order: skip
+solver:
+  batch_size: 1024
+  beta-crown:
+    iteration: 20
+bab:
+  # timeout: 1000
+  branching:
+    method: fsb
+    reduceop: min
+    candidates: 1

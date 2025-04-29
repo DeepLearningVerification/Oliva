@@ -1,0 +1,19 @@
+general:
+  # enable_incomplete_verification: False
+  root_path: ../../vnncomp2021/benchmarks/oval21  # Please update this path to point to the VNN-COMP 2022 repo
+  csv_name: oval21_deep_instances.csv
+  conv_mode: matrix
+solver:
+  batch_size: 1
+  beta-crown:
+    iteration: 20
+    lr_beta: 0.03
+bab:
+  branching:
+    method: kfsb  # Branching heuristic. babsr is fast but less accurate; fsb is slow but most accurate; kfsb is usually a balance; kfsb-intercept-only is faster but may lead to worse branching; sb is fast smart branching which relies on the A matrix.
+    candidates: 5  # Number of candidates to consider when using fsb or kfsb. More candidates lead to slower but better branching.
+    reduceop: min  # Reduction operation to compute branching scores from two sides of a branch (min or max). max can work better on some models.
+    input_split:
+      enable: false  # Branch on input domain rather than unstable neurons.
+attack:
+  pgd_order: skip

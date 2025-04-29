@@ -1,0 +1,24 @@
+# Configuration file for running the mnist_fc benchmark (large models).
+general:
+  root_path: ../../vnncomp2021/benchmarks/mnistfc
+  csv_name: mnistL2_instances.csv
+  complete_verifier: bab
+model:
+  input_shape: [-1, 1, 28, 28]  # This onnx model has input shape [-1, 784] which is not compatible with our MIP solution
+data:
+  start: 0
+  end: 100
+solver:
+  batch_size: 1
+  beta-crown:
+    iteration: 20
+    lr_beta: 0.03
+bab:
+  branching:
+    method: kfsb  # Branching heuristic. babsr is fast but less accurate; fsb is slow but most accurate; kfsb is usually a balance; kfsb-intercept-only is faster but may lead to worse branching; sb is fast smart branching which relies on the A matrix.
+    candidates: 5  # Number of candidates to consider when using fsb or kfsb. More candidates lead to slower but better branching.
+    reduceop: min  # Reduction operation to compute branching scores from two sides of a branch (min or max). max can work better on some models.
+    input_split:
+      enable: false  # Branch on input domain rather than unstable neurons.
+attack:
+  pgd_order: skip

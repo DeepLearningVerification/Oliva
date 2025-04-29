@@ -1,0 +1,450 @@
+0,Status.VERIFIED, tree size:,1, time:,7.8916916847229, visited nodes,5
+Average time:,7.8916916847229, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.167523384094238, visited nodes,5
+Average time:,7.167523384094238, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.21794319152832, visited nodes,5
+Average time:,7.21794319152832, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.196345567703247, visited nodes,5
+Average time:,7.196345567703247, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.103454828262329, visited nodes,5
+Average time:,7.103454828262329, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.169613838195801, visited nodes,5
+Average time:,7.169613838195801, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.707587718963623, visited nodes,3
+Average time:,9.707587718963623, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.625299215316772, visited nodes,3
+Average time:,9.625299215316772, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.55347466468811, visited nodes,3
+Average time:,9.55347466468811, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.774017095565796, visited nodes,3
+Average time:,9.774017095565796, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.50020980834961, visited nodes,3
+Average time:,9.50020980834961, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,9.906521081924438, visited nodes,3
+Average time:,9.906521081924438, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.015974283218384, visited nodes,7
+Average time:,9.015974283218384, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.180359363555908, visited nodes,7
+Average time:,9.180359363555908, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.157824516296387, visited nodes,7
+Average time:,9.157824516296387, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.082574844360352, visited nodes,7
+Average time:,9.082574844360352, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.261064767837524, visited nodes,7
+Average time:,9.261064767837524, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.136325359344482, visited nodes,7
+Average time:,9.136325359344482, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,76.70091152191162, visited nodes,56
+Average time:,76.70091152191162, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,50.67913055419922, visited nodes,36
+Average time:,50.67913055419922, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,50.37232232093811, visited nodes,38
+Average time:,50.37232232093811, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,45.913079023361206, visited nodes,32
+Average time:,45.913079023361206, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,93.98898124694824, visited nodes,68
+Average time:,93.98898124694824, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,108.23638105392456, visited nodes,76
+Average time:,108.23638105392456, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.3426671028137, visited nodes,467
+Average time:,1001.3426671028137, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.3541195392609, visited nodes,523
+Average time:,1001.3541195392609, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.342164516449, visited nodes,669
+Average time:,1001.342164516449, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1003.5031657218933, visited nodes,693
+Average time:,1003.5031657218933, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1003.2437155246735, visited nodes,689
+Average time:,1003.2437155246735, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.9736080169678, visited nodes,683
+Average time:,1001.9736080169678, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,195.96157670021057, visited nodes,34
+Average time:,195.96157670021057, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,134.0570707321167, visited nodes,24
+Average time:,134.0570707321167, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,111.51239848136902, visited nodes,20
+Average time:,111.51239848136902, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,207.51338911056519, visited nodes,36
+Average time:,207.51338911056519, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,230.59122109413147, visited nodes,40
+Average time:,230.59122109413147, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,172.43979907035828, visited nodes,30
+Average time:,172.43979907035828, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4968962669373, visited nodes,91
+Average time:,1001.4968962669373, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4790053367615, visited nodes,93
+Average time:,1001.4790053367615, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4810090065002, visited nodes,95
+Average time:,1001.4810090065002, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4915270805359, visited nodes,101
+Average time:,1001.4915270805359, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.VERIFIED, tree size:,1, time:,167.0649597644806, visited nodes,103
+Average time:,167.0649597644806, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,166.38315415382385, visited nodes,103
+Average time:,166.38315415382385, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.30437994003296, visited nodes,21
+Average time:,28.30437994003296, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.269615650177002, visited nodes,21
+Average time:,28.269615650177002, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.186492204666138, visited nodes,21
+Average time:,28.186492204666138, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.43757390975952, visited nodes,21
+Average time:,28.43757390975952, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.284504890441895, visited nodes,21
+Average time:,28.284504890441895, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,30.137606382369995, visited nodes,21
+Average time:,30.137606382369995, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,8.925533056259155, visited nodes,3
+Average time:,8.925533056259155, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.062100172042847, visited nodes,3
+Average time:,9.062100172042847, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,8.933168411254883, visited nodes,3
+Average time:,8.933168411254883, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,8.834733247756958, visited nodes,3
+Average time:,8.834733247756958, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,9.034141778945923, visited nodes,3
+Average time:,9.034141778945923, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,8.875400066375732, visited nodes,3
+Average time:,8.875400066375732, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,71.6447765827179, visited nodes,31
+Average time:,71.6447765827179, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,71.63409948348999, visited nodes,31
+Average time:,71.63409948348999, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,71.94251418113708, visited nodes,31
+Average time:,71.94251418113708, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,71.8917384147644, visited nodes,31
+Average time:,71.8917384147644, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,72.4121241569519, visited nodes,31
+Average time:,72.4121241569519, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,71.57708287239075, visited nodes,31
+Average time:,71.57708287239075, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,65.55165147781372, visited nodes,51
+Average time:,65.55165147781372, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,66.09260153770447, visited nodes,51
+Average time:,66.09260153770447, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,65.28710222244263, visited nodes,51
+Average time:,65.28710222244263, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,65.21552205085754, visited nodes,51
+Average time:,65.21552205085754, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,65.61787796020508, visited nodes,51
+Average time:,65.61787796020508, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,64.49460005760193, visited nodes,51
+Average time:,64.49460005760193, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.492979764938354, visited nodes,17
+Average time:,44.492979764938354, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.52587080001831, visited nodes,17
+Average time:,44.52587080001831, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.243828773498535, visited nodes,17
+Average time:,44.243828773498535, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.31543231010437, visited nodes,17
+Average time:,44.31543231010437, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.24612379074097, visited nodes,17
+Average time:,44.24612379074097, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,44.58089327812195, visited nodes,17
+Average time:,44.58089327812195, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,141.76260256767273, visited nodes,11
+Average time:,141.76260256767273, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,115.8249864578247, visited nodes,9
+Average time:,115.8249864578247, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,304.9790349006653, visited nodes,23
+Average time:,304.9790349006653, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,90.28467297554016, visited nodes,7
+Average time:,90.28467297554016, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,195.61442065238953, visited nodes,15
+Average time:,195.61442065238953, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,116.05880856513977, visited nodes,9
+Average time:,116.05880856513977, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.883679389953613, visited nodes,21
+Average time:,28.883679389953613, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.891587734222412, visited nodes,21
+Average time:,28.891587734222412, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.75655508041382, visited nodes,21
+Average time:,28.75655508041382, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,28.778403282165527, visited nodes,21
+Average time:,28.778403282165527, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,29.16572666168213, visited nodes,21
+Average time:,29.16572666168213, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,29.254114627838135, visited nodes,21
+Average time:,29.254114627838135, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.572679042816162, visited nodes,15
+Average time:,23.572679042816162, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.9472074508667, visited nodes,15
+Average time:,23.9472074508667, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.585527658462524, visited nodes,15
+Average time:,23.585527658462524, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.593560934066772, visited nodes,15
+Average time:,23.593560934066772, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.6134352684021, visited nodes,15
+Average time:,23.6134352684021, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,23.652570724487305, visited nodes,15
+Average time:,23.652570724487305, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.3814659118652, visited nodes,81
+Average time:,1001.3814659118652, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.3740921020508, visited nodes,95
+Average time:,1001.3740921020508, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.VERIFIED, tree size:,1, time:,230.63721895217896, visited nodes,107
+Average time:,230.63721895217896, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,230.12505984306335, visited nodes,107
+Average time:,230.12505984306335, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,230.51974034309387, visited nodes,107
+Average time:,230.51974034309387, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,231.20372438430786, visited nodes,107
+Average time:,231.20372438430786, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,202.17895102500916, visited nodes,11
+Average time:,202.17895102500916, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,163.00197100639343, visited nodes,9
+Average time:,163.00197100639343, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,162.90861320495605, visited nodes,9
+Average time:,162.90861320495605, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,202.20207285881042, visited nodes,11
+Average time:,202.20207285881042, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,277.9583661556244, visited nodes,15
+Average time:,277.9583661556244, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,166.1450731754303, visited nodes,9
+Average time:,166.1450731754303, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.340553522109985, visited nodes,2
+Average time:,57.340553522109985, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.32726740837097, visited nodes,2
+Average time:,57.32726740837097, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.380879163742065, visited nodes,2
+Average time:,57.380879163742065, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.22935461997986, visited nodes,2
+Average time:,57.22935461997986, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.14429569244385, visited nodes,2
+Average time:,57.14429569244385, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,57.049012422561646, visited nodes,2
+Average time:,57.049012422561646, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.428558349609375, visited nodes,5
+Average time:,7.428558349609375, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.497390031814575, visited nodes,5
+Average time:,7.497390031814575, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.504361629486084, visited nodes,5
+Average time:,7.504361629486084, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.356749773025513, visited nodes,5
+Average time:,7.356749773025513, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.546497344970703, visited nodes,5
+Average time:,7.546497344970703, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,7.371143579483032, visited nodes,5
+Average time:,7.371143579483032, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.3518419265747, visited nodes,73
+Average time:,1001.3518419265747, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4993789196014, visited nodes,73
+Average time:,1001.4993789196014, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.350426197052, visited nodes,75
+Average time:,1001.350426197052, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.VERIFIED, tree size:,1, time:,111.63880968093872, visited nodes,79
+Average time:,111.63880968093872, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,111.18106484413147, visited nodes,79
+Average time:,111.18106484413147, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,110.43101668357849, visited nodes,79
+Average time:,110.43101668357849, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.510462760925293, visited nodes,3
+Average time:,4.510462760925293, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.623648643493652, visited nodes,3
+Average time:,4.623648643493652, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.51454758644104, visited nodes,3
+Average time:,4.51454758644104, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.48979640007019, visited nodes,3
+Average time:,4.48979640007019, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.703287124633789, visited nodes,3
+Average time:,4.703287124633789, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.4738829135894775, visited nodes,3
+Average time:,4.4738829135894775, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1001.4147701263428, visited nodes,645
+Average time:,1001.4147701263428, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.998042345047, visited nodes,645
+Average time:,1002.998042345047, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.5438888072968, visited nodes,645
+Average time:,1002.5438888072968, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1003.3212718963623, visited nodes,641
+Average time:,1003.3212718963623, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.7936520576477, visited nodes,621
+Average time:,1002.7936520576477, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1004.5566213130951, visited nodes,603
+Average time:,1004.5566213130951, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.VERIFIED, tree size:,1, time:,41.18520712852478, visited nodes,23
+Average time:,41.18520712852478, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,42.050910234451294, visited nodes,23
+Average time:,42.050910234451294, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,40.66590976715088, visited nodes,23
+Average time:,40.66590976715088, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,40.397533655166626, visited nodes,23
+Average time:,40.397533655166626, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,40.4425687789917, visited nodes,23
+Average time:,40.4425687789917, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,40.829139947891235, visited nodes,23
+Average time:,40.829139947891235, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.2437243461609, visited nodes,533
+Average time:,1002.2437243461609, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.4640128612518, visited nodes,529
+Average time:,1002.4640128612518, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1004.6010239124298, visited nodes,521
+Average time:,1004.6010239124298, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1004.8601760864258, visited nodes,511
+Average time:,1004.8601760864258, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1003.4558067321777, visited nodes,491
+Average time:,1003.4558067321777, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.UNKNOWN, tree size:,1, time:,1002.8997025489807, visited nodes,475
+Average time:,1002.8997025489807, Average tree size,1.0
+{<Status.UNKNOWN: 3>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.918969392776489, visited nodes,3
+Average time:,4.918969392776489, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,5.00818943977356, visited nodes,3
+Average time:,5.00818943977356, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.851312875747681, visited nodes,3
+Average time:,4.851312875747681, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.981080770492554, visited nodes,3
+Average time:,4.981080770492554, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.91777491569519, visited nodes,3
+Average time:,4.91777491569519, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,4.88154149055481, visited nodes,3
+Average time:,4.88154149055481, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}

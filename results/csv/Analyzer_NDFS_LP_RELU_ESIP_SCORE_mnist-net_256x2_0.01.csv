@@ -1,0 +1,18 @@
+0,Status.VERIFIED, tree size:,1, time:,0.8658366203308105, visited nodes,0
+Average time:,0.8658366203308105, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,0.35752272605895996, visited nodes,0
+Average time:,0.35752272605895996, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,0.35573840141296387, visited nodes,0
+Average time:,0.35573840141296387, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.VERIFIED, tree size:,1, time:,0.37526464462280273, visited nodes,0
+Average time:,0.37526464462280273, Average tree size,1.0
+{<Status.VERIFIED: 1>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,6.60159969329834, visited nodes,5
+Average time:,6.60159969329834, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
+0,Status.ADV_EXAMPLE, tree size:,1, time:,6.618527173995972, visited nodes,5
+Average time:,6.618527173995972, Average tree size,1.0
+{<Status.ADV_EXAMPLE: 2>: 1}
