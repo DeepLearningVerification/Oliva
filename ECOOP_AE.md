@@ -2,18 +2,17 @@
 
 
 ## Authors
-    - Guanqin ZHANG (UNSW & CSIRO's Data61)
-    - Kota Fukuda  
-    - Zhenya Zhang  
-    - H.M.N. Dilum Bandara  
-    - Shiping CHEN  
-    - Jianjun Zhao  
-    - Yulei Sui 
+    - Guanqin ZHANG (UNSW & CSIRO's Data61, Sydney, Australia)
+    - Kota Fukuda  (Kyushu University, Fukuoka, Japan)
+    - Zhenya Zhang  (Kyushu University, Fukuoka, Japan National Institute of Informatics, Tokyo, Japan)
+    - H.M.N. Dilum Bandara (UNSW & CSIRO's Data61, Sydney, Australia)
+    - Shiping CHEN  (UNSW & CSIRO's Data61, Sydney, Australia)
+    - Jianjun Zhao  (Kyushu University, Fukuoka, Japan)
+    - Yulei Sui (UNSW, Sydney, Australia)
 
 ## Important notes
     - Verifiers are mainly developed and well tested on Linux, using other operating systems might run into problems.
     - Verification problem is NP-complete, thus, hard to verify. Verifiers often take long time to finish. 
-    - 
 
 
 ## 1. Quickstart
@@ -22,7 +21,6 @@
     The following software is required for running this artifact:
 
     This artifact will be working fine with Linux/-alike. Please do not use it for Windows 
-
 
 ### 1.2 Installations
     With docker, you don't have to worry anything. 
@@ -106,6 +104,7 @@ We have already submitted as in the DART documentation, and publicly available a
 python run_single.py 61 0.0392156862745098 GR mnistL2 0 10
 ```
 
+Shown
 ```
 Model creation time:  0.1075444221496582
 SpecNode          LB:  -0.9929898977279663 status:  Status.UNKNOWN
@@ -130,10 +129,11 @@ Lower Bound: -0.9380231499671936
 
 ```
 
+Command:
 ```
 python run_single.py 65 0.0392156862745098 GR mnistL4 0 10
 ```
-
+Shown
 ```
 :~/Oliva# python run_single.py 65 0.0392156862745098 GR mnistL4 0 10
 Using Domain.LP abstract domain
@@ -160,9 +160,13 @@ Nodes Visited: 3
 Lower Bound: -287.9921569824219
 ```
 
+Command
+
 ```
 python run_single.py 13 0.0470588235294117 GR cifarbase 0 10
-
+```
+Shown
+```
 Using Domain.LP abstract domain
 Files already downloaded and verified
 ************************** Proof 1 *****************************
@@ -190,8 +194,11 @@ SpecNode          LB:  -1.116666316986084 status:  Status.UNKNOWN
 ## Functional Badge
 
 ### RQ0 - Data Statistics
+Command
 ```
 python AEC_scripts/RQ0.py --table1
+```
+Shown
 ```
 Generating Table 1 analysis...
 Model           Architecture            Dataset         #Activations    # Instances     #Images
@@ -201,21 +208,23 @@ OVAL21BASE      2 Conv, 2 linear        CIFAR-10        3172            173     
 OVAL21WIDE      2 Conv, 2 linear        CIFAR-10        6244            196             53
 OVAL21DEEP      4 Conv, 2 linear        CIFAR-10        6756            143             40
 ```
-
+Command
 
 ```
 python AEC_scripts/RQ0.py --figure3
 ```
+Shown
 ```
 Generating Figure 3 analysis...
 Dataset                 Total   Verified        Falsified       Unknown
 {'mnistL2': {'total': 100, 'verified': 84, 'falsified': 13, 'unknown': 3}, 'mnistL4': {'total': 78, 'verified': 39, 'falsified': 26, 'unknown': 13}, 'oval21_base': {'total': 173, 'verified': 40, 'falsified': 2, 'unknown': 131}, 'oval21_deep': {'total': 143, 'verified': 31, 'falsified': 2, 'unknown': 110}, 'oval21_wide': {'total': 196, 'verified': 31, 'falsified': 9, 'unknown': 156}}
 
 ```
-
+Command
 ```
 python AEC_scripts/RQ0.py --figure4
 ```
+Shown
 ```
 Generating Figure 4 analysis...
 Distribution of instances by number of visited nodes:
@@ -228,9 +237,11 @@ Total: {'0-10': 116, '11-50': 185, '51-100': 81, '101-200': 98, '201-500': 113, 
 ```
 
 
+------
 
 ### RQ1 - Overall Performance Evaluation
 
+Command
 ```
 python AEC_scripts/RQ1.py --table2
 
@@ -250,9 +261,9 @@ Our finshed experimental results is all available at ./ECOOPResults
 
 
 <details><summary> Reproduce ALL data from Ground </summary>
-<p>
+
 In order to generate the results, each instances are under 1000s time budgets and for our BaB-baseline, Oliva^GR, and Oliva^SA, the promising time to finish all verification cases in 
-3(verifiier) x 1000(s) x 790(instances) = 658(h) under EC2 (8 core CPU x4Large 32G Ram). 
+3(verifier) x 1000(s) x 790(instances) = 658(h) under EC2 (8 core CPU x4Large 32G Ram). 
 
 python verifier.py mnistL2 01 -1
 
@@ -264,9 +275,9 @@ python verifier.py cifar10ovaldeep 01 -1
 
 python verifier.py cifar10ovalwide 01 -1
 
-```
-</p>
 </details>
+
+### Trial for validation
 
 We value the reviewers' time, to easily validate our tool's reproducibility, we settled a short listed cases with initial 5 cases in our selected models and problem instances.
 
@@ -282,9 +293,10 @@ python verifier.py cifar10ovaldeep 02 -1
 python verifier.py cifar10ovalwide 02 -1
 
 ```
-
+```
 python AEC_scripts/RQ1.py --table3
 ```
+Shown
 ```
 Generating Table 3 analysis:
 \bab-Baseline  & 0 & 81 &59 &9& 14\\ \hline
@@ -293,11 +305,16 @@ Generating Table 3 analysis:
 \toolg & 271 &255 &226& 0 &  40\\\hline
 \toolb & 247 &242 &213& 11 & 0  \\\hline
 ```
+
+
+### Generating Table 4 analysis:
+Command
 ```
 python AEC_scripts/RQ1.py --table4
 ```
+Shown
 ```
-Generating Table 4 analysis:
+
 
 Statistics for overall:
 
@@ -320,7 +337,7 @@ Mean: 7.57
 
 ----
 
-### RQ2
+### RQ2 (Figure 7)
 
 
 ```
@@ -367,7 +384,7 @@ Oliva^SA:
   75th percentile: 1.20
 
 ```
-
+### RQ2 Sensitivity analysis (Figure 6)
 ```
  python AEC_scripts/RQ2_sa.py 
 
@@ -471,7 +488,7 @@ Total count: 266
 
 ----
 
-### RQ - 3 
+### RQ 3 - Figure 8 
 
 ```
 python AEC_scripts/RQ3.py --lambda
@@ -517,7 +534,7 @@ python AEC_scripts/RQ3.py --lambda
   
 ```
 
-
+### RQ3 - Figure 9
 
 ```
 python AEC_scripts/RQ3.py --alpha
