@@ -96,7 +96,7 @@ Lower Bound: None
 
 ## Available Badge 
 
-We have already submitted as in the DART documentation, and publicly available at DOCKER, ZONODU, and Github. 
+We have already submitted as in the DART documentation, and publicly available at DOCKER, Zenodo, and Github. 
 
 ## Reusable Badge
 
