@@ -1,5 +1,25 @@
 # OLIVA
 
+
+
+
+<img src="https://i.postimg.cc/SNtzgZST/st1.png" alt="propose" width="450"/>
+
+
+We propose **OLIVA**, a framework that leverages stochastic optimization techniques for neural network verification:
+
+- **OLIVA-G**: a greedy approach for efficient verification.
+- **OLIVA-B**: a simulated annealing (SA)-inspired approach for enhanced exploration.
+
+The design of **OLIVA-B** is motivated by identifying and extending two key relationships:
+1. The connection between OLIVA-G and classic hill climbing algorithms.
+2. The relationship between classic simulated annealing and classic hill climbing.
+
+These insights guide the development of OLIVA's optimization strategies for scalable and effective neural network verification.
+
+
+<details><summary> Installation </summary>
+<p>
 ## Part I: Installation and Setup
 
 #### Step (1) Set up for Python EVN
@@ -173,6 +193,8 @@ We present the statistical significance of the differences in our results by usi
 
 <img src='ECOOPResults/table_wilcoxon.png' alt='wilcoxon' width='950'/>
 
+</p>
+</details>
 ----------
 
 ## License and Copyright
