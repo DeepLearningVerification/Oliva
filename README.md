@@ -17,6 +17,7 @@ The design of **OLIVA-B** is motivated by identifying and extending two key rela
 
 These insights guide the development of OLIVA's optimization strategies for scalable and effective neural network verification.
 
+This work is presented in [ECOOP'25](https://2025.ecoop.org/details/ecoop-2025-technical-papers/32/Efficient-Neural-Network-Verification-via-Order-Leading-Exploration-of-Branch-and-Bou) with [detailed slides](https://guanqin-123.github.io/files/ECOOP2025_slides.pdf)
 
 <details><summary> Installation </summary>
 <p>
