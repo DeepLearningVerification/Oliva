@@ -6,7 +6,7 @@
 <img src="https://i.postimg.cc/SNtzgZST/st1.png" alt="propose" width="450"/>
 
 
-We propose **OLIVA**, a framework that leverages stochastic optimization techniques for neural network verification:
+We propose **OLIVA**, a framework that leverages ___stochastic___ optimization techniques for neural network verification:
 
 - **OLIVA-G**: a greedy approach for efficient verification.
 - **OLIVA-B**: a simulated annealing (SA)-inspired approach for enhanced exploration.
