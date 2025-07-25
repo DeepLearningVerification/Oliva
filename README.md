@@ -17,7 +17,7 @@ The design of **OLIVA-SA** is motivated by identifying and extending two key rel
 
 These insights guide the development of OLIVA's optimization strategies for scalable and effective neural network verification.
 
-This [paper](https://arxiv.org/abs/2507.17453) is presented in ECOOP'25 with [detailed slides](https://guanqin-123.github.io/files/ECOOP2025_slides.pdf)
+This [work](https://arxiv.org/abs/2507.17453) is presented in ECOOP'25 with [detailed slides](https://guanqin-123.github.io/files/ECOOP2025_slides.pdf)
 
 
 ---------------
