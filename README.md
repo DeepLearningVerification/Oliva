@@ -8,8 +8,8 @@
 
 We propose **OLIVA**, a framework that leverages ___stochastic___ optimization techniques for neural network verification:
 
-- **OLIVA-G**: a greedy approach for efficient verification.
-- **OLIVA-B**: a simulated annealing (SA)-inspired approach for enhanced exploration.
+- **OLIVA-GR**: a greedy approach for efficient verification.
+- **OLIVA-SA**: a simulated annealing (SA)-inspired approach for enhanced exploration.
 
 The design of **OLIVA-B** is motivated by identifying and extending two key relationships:
 1. The connection between OLIVA-G and classic hill climbing algorithms.
@@ -17,7 +17,23 @@ The design of **OLIVA-B** is motivated by identifying and extending two key rela
 
 These insights guide the development of OLIVA's optimization strategies for scalable and effective neural network verification.
 
-This work is presented in [ECOOP'25](https://2025.ecoop.org/details/ecoop-2025-technical-papers/32/Efficient-Neural-Network-Verification-via-Order-Leading-Exploration-of-Branch-and-Bou) with [detailed slides](https://guanqin-123.github.io/files/ECOOP2025_slides.pdf)
+This [paper](https://arxiv.org/abs/2507.17453) is presented in ECOOP'25 with [detailed slides](https://guanqin-123.github.io/files/ECOOP2025_slides.pdf)
+
+
+---------------
+
+
+<img src="https://i.postimg.cc/htzX9gCq/sa-vs-abonn-comparison.png" alt="propose" width="450"/>
+
+
+We also perform a comparison between OLIVA and MCTS-based [ABONN](https://github.com/DeepLearningVerification/ABONN).  The above figure summarizes the results on 34 conclusive (violated) instances.
+OLIVA-SA successfully solve these problems (blue circles). 
+Moreover, the stochastic nature of OLIVA-SA crucially provides repeated opportunities to find more counterexamples. 
+This is particularly true for instance \#28, where we not only repeat the experiments of OLIVA-SA, but also allow ABONN to continue running beyond the 1000-second timeout. However, ABONN fails to find any counterexamples, while OLIVA-SA succeeds in doing so through repeated runs. This highlights the unique strengths of the stochastic optimisation-based OLIVA-SA compared to the deterministic ABONN approach.
+
+
+
+--------------------
 
 <details><summary> Installation </summary>
 <p>
