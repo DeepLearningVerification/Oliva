@@ -12,7 +12,7 @@ We propose **OLIVA**, a framework that leverages ___stochastic___ optimization t
 - **OLIVA-SA**: a simulated annealing (SA)-inspired approach for enhanced exploration.
 
 The design of **OLIVA-SA** is motivated by identifying and extending two key relationships:
-1. The connection between OLIVA-G and classic hill climbing algorithms.
+1. The connection between OLIVA-GR and classic hill climbing algorithms.
 2. The relationship between classic simulated annealing and classic hill climbing.
 
 These insights guide the development of OLIVA's optimization strategies for scalable and effective neural network verification.
