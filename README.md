@@ -219,4 +219,3 @@ We present the statistical significance of the differences in our results by usi
 Licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0)
 - Our implementation is built on top of 
     - [ERAN] https://github.com/eth-sri/eran
-    - [IVAN] https://github.com/uiuc-arc/Incremental-DNN-Verification 
