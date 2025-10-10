@@ -1,0 +1,88 @@
+Running: python run_single.py 0 0.0313725490196078 GR mnistL4 0 1000 1
+------------------------
+Using Domain.LP abstract domain for separate label verification (NDFS)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2539858
+Academic license 2539858 - for non-commercial use only - registered to jo___@connect.polyu.hk
+/home/guanqizh/Data/miniconda3/envs/py38/lib/python3.8/site-packages/torch/utils/cpp_extension.py:25: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import packaging  # type: ignore[attr-defined]
+/home/guanqizh/Data/miniconda3/envs/py38/lib/python3.8/site-packages/pkg_resources/__init__.py:2832: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/data/guanqizh/Oliva/nnverify/domains/lp.py:499: DeprecationWarning: The MVar constructor is deprecated, use MVar.fromlist instead
+  gvars = grb.MVar(new_layer_gurobi_vars)
+Model creation time:  0.0693509578704834
+Starting separate verification for each adversarial label (true label: 7)
+
+=== Verifying against adversarial label 0 ===
+Model creation time:  0.04977226257324219
+Result for adv_label 0: Status.VERIFIED, tree_size: 1, lb: None, time: 29.228s
+
+=== Verifying against adversarial label 1 ===
+Model creation time:  0.047042131423950195
+Result for adv_label 1: Status.VERIFIED, tree_size: 1, lb: None, time: 29.560s
+
+=== Verifying against adversarial label 2 ===
+Model creation time:  0.04828763008117676
+
+SpecNode 	 Depth:  0 LB:  -0.014459619298577309
+Chosen relu for splitting: (3, 198) tensor(0.2843)
+
+SpecNode 	 Depth:  1 LB:  0.049176670610904694
+
+SpecNode 	 Depth:  1 LB:  0.07756895571947098
+Result for adv_label 2: Status.VERIFIED, tree_size: 3, lb: 0.049176670610904694, time: 112.643s
+
+=== Verifying against adversarial label 3 ===
+Model creation time:  0.04811739921569824
+Result for adv_label 3: Status.VERIFIED, tree_size: 1, lb: None, time: 26.236s
+
+=== Verifying against adversarial label 4 ===
+Model creation time:  0.13053250312805176
+Result for adv_label 4: Status.VERIFIED, tree_size: 1, lb: None, time: 25.300s
+
+=== Verifying against adversarial label 5 ===
+Model creation time:  0.048079490661621094
+Result for adv_label 5: Status.VERIFIED, tree_size: 1, lb: None, time: 25.550s
+
+=== Verifying against adversarial label 6 ===
+Model creation time:  0.05077528953552246
+Result for adv_label 6: Status.VERIFIED, tree_size: 1, lb: None, time: 26.764s
+
+=== Verifying against adversarial label 8 ===
+Model creation time:  0.04831552505493164
+Result for adv_label 8: Status.VERIFIED, tree_size: 1, lb: None, time: 27.651s
+
+=== Verifying against adversarial label 9 ===
+Model creation time:  0.049311161041259766
+Result for adv_label 9: Status.VERIFIED, tree_size: 1, lb: None, time: 25.668s
+
+=== Separate Verification Results for Image 0 ===
+Epsilon: 0.0313725490196078
+-----------------------------------------------------------------------------------------------
+Adv Label  Status       Tree Size  Nodes    Lower Bound  Time (s)  
+-----------------------------------------------------------------------------------------------
+0          VERIFIED     1          0        N/A          29.228    
+1          VERIFIED     1          0        N/A          29.560    
+2          VERIFIED     3          3        0.049176670610904694 112.643   
+3          VERIFIED     1          0        N/A          26.236    
+4          VERIFIED     1          0        N/A          25.300    
+5          VERIFIED     1          0        N/A          25.550    
+6          VERIFIED     1          0        N/A          26.764    
+8          VERIFIED     1          0        N/A          27.651    
+9          VERIFIED     1          0        N/A          25.668    
+-----------------------------------------------------------------------------------------------
+Summary: 9 verified, 0 adversarial, 0 unknown
+Total nodes visited: 3
+Total verification time: 328.600s
+Result: ROBUST against all adversarial labels
+
+Results saved to: results/separate_verification_MNIST_mnistL4_GR.csv
+Running: python run_single.py 0 0.0588235294117647 GR mnistL4 0 1000 1
+------------------------
+Using Domain.LP abstract domain for separate label verification (NDFS)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2539858
+Academic license 2539858 - for non-commercial use only - registered to jo___@connect.polyu.hk

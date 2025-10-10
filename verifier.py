@@ -22,7 +22,7 @@ from nnverify.bnb.proof_tree import ProofTree
 import nnverify.attack
 
 import verifier_util
-from verifier_util import Result_Olive, Results_Olive, Spec_D
+from verifier_util import Result_Olive, Results_Olive, Spec_D, get_verified_spec
 
 
 
@@ -71,6 +71,27 @@ class AnalyzerBase(Analyzer):
         print('Average time:', results.avg_time)
         return results
     
+    def run_analyzer_separate_labels(self, index, eps=1/255, mode="easy", n_classes=10):
+        """
+        Run analyzer with separate verification for each adversarial label.
+        Returns results for each adversarial label separately.
+        """
+        print('Using %s abstract domain for separate label verification' % self.args.domain)
+        index = int(index)
+        eps = float(eps)
+        props, inputs = verifier_util.get_specs(self.args.dataset, spec_type=self.args.spec_type, count=self.args.count, eps=eps, mode=mode)
+        property_obj = props[index]
+        # Get the first input clause (InputSpec) from the Property object
+        prop = property_obj.get_input_clause(0)
+        
+        # Create BnB analyzer instance
+        self.update_transformer(prop)
+        bnb_analyzer = BnBBase(self.net, self.transformer, prop, self.args, self.template_store)
+        
+        # Run separate verification for each adversarial label
+        separate_results = bnb_analyzer.verify_all_labels_separately(n_classes)
+        return separate_results
+    
     def analyze(self, prop):
         self.update_transformer(prop)
         tree_size = 1
@@ -105,9 +126,15 @@ class AnalyzerBase(Analyzer):
 
 class BnBBase(bnb.BnB):
     def __init__(self, net, transformer, init_prop, args, template_store, print_result=False):
-        self.node_visited = 0
         super().__init__(net, transformer, init_prop, args, template_store, print_result)
+        self.node_visited = 0
     
+    def verify_all_adversarial_labels(self, n_classes=10):
+        """
+        Perform separate branch and bound verification for each adversarial label.
+        This creates separate verification trees for each adversarial label.
+        """
+        return self.verify_all_labels_separately(n_classes)
     
     @classmethod
     def class_name(cls):
@@ -162,6 +189,153 @@ class BnBBase(bnb.BnB):
             lb = float(lb)
         self.node_visited += 1
         return status, lb
+    
+    def get_status(self, adv_ex, is_feasible, lb):
+        status = Status.UNKNOWN
+        if adv_ex is not None:
+            config.write_log("Found a counter example!")
+            status = Status.ADV_EXAMPLE
+        elif (not is_feasible) or (lb is not None and torch.all(lb >= 0)):
+            status = Status.VERIFIED
+        return status
+
+    def verify_node_targeted(self, transformer, prop, target_adv_label):
+        """
+        Verify against a specific adversarial label only.
+        Creates a targeted property and performs verification.
+        """
+        from nnverify.specs.out_spec import Constraint, OutSpecType
+        from nnverify.specs.property import Property
+        
+        # Create targeted constraint
+        true_label = prop.get_label()
+        targeted_constraint = Constraint(OutSpecType.LOCAL_ROBUST, label=true_label, adv_label=target_adv_label)
+        
+        # Create new property with targeted constraint  
+        targeted_prop = Property(prop.input_lb, prop.input_ub, prop.inp_type, targeted_constraint, prop.dataset)
+        
+        # Update transformer with targeted property
+        original_prop = transformer.prop
+        transformer.prop = targeted_prop
+        
+        # Rebuild the LP model with the new targeted constraint
+        transformer.create_lp_model(transformer.net, targeted_prop, relu_mask=transformer.cur_relu_mask)
+        
+        lb, is_feasible, adv_ex = transformer.compute_lb(complete=True)
+        status = self.get_status(adv_ex, is_feasible, lb)
+        if lb is not None:
+            lb = float(lb)
+        self.node_visited += 1
+        
+        # Restore original property
+        transformer.prop = original_prop
+        
+        return status, lb, target_adv_label
+
+    def verify_all_labels_separately(self, n_classes=10):
+        """
+        Perform separate branch and bound verification for each adversarial label.
+        Returns a list of results, one for each adversarial label.
+        """
+        true_label = self.init_prop.get_label()
+        all_results = []
+        original_init_prop = self.init_prop  # Store original property
+        
+        print(f"Starting separate verification for each adversarial label (true label: {true_label})")
+        
+        for adv_label in range(n_classes):
+            if adv_label == true_label:
+                continue  # Skip the true label
+                
+            print(f"\n=== Verifying against adversarial label {adv_label} ===")
+            
+            # Start timing for this label
+            label_start_time = time.time()
+            
+            # Create targeted property for this adversarial label
+            from nnverify.specs.out_spec import Constraint, OutSpecType
+            from nnverify.specs.input_spec import InputSpec
+            
+            targeted_constraint = Constraint(OutSpecType.LOCAL_ROBUST, label=true_label, adv_label=torch.tensor(adv_label))
+            # Create a new InputSpec with the targeted constraint
+            targeted_input_spec = InputSpec(original_init_prop.input_lb, original_init_prop.input_ub, targeted_constraint, original_init_prop.dataset, input=getattr(original_init_prop, 'input', None))
+            
+            # Create new BnB instance for this targeted verification
+            from nnverify.domains import get_domain_transformer
+            targeted_transformer = get_domain_transformer(self.args, self.net, targeted_input_spec, complete=True)
+            targeted_bnb = BnBBase(self.net, targeted_transformer, targeted_input_spec, self.args, self.template_store)
+            
+            # Run the verification
+            status, tree_size, nodes_visited, lb = targeted_bnb.run_verification()
+            
+            # Calculate time for this label
+            label_time = time.time() - label_start_time
+            
+            result = {
+                'adv_label': adv_label,
+                'status': status,
+                'tree_size': tree_size if tree_size is not None else 1,
+                'nodes_visited': nodes_visited if nodes_visited is not None else 0,
+                'lower_bound': lb,
+                'true_label': true_label,
+                'verification_time': label_time
+            }
+            
+            all_results.append(result)
+            print(f"Result for adv_label {adv_label}: {status}, tree_size: {result['tree_size']}, lb: {lb}, time: {label_time:.3f}s")
+        
+        return all_results
+    
+    def reset_for_new_verification(self):
+        """Reset verifier state for a new verification run."""
+        self.node_visited = 0
+        self.global_status = Status.UNKNOWN
+        self.root_spec = None
+        self.final_tree = None
+        
+    def run_verification(self):
+        """Run the verification process and return results."""
+        # Check if already solved
+        if self.global_status != Status.UNKNOWN:
+            return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+        
+        # Get unstable relus
+        unstable_relus = self.get_unstable_relus()
+        
+        # Create initial specs
+        self.cur_specs = self.create_initial_specs(self.init_prop, unstable_relus)
+        self.tree_size = len(self.cur_specs)
+        
+        # Main branch-and-bound loop (same logic as run() method)
+        while self.continue_search():
+            
+            self.prev_lb = self.cur_lb
+            self.reset_cur_lb()
+            
+            # Main verification loop
+            if self.args.parallel:
+                self.verify_specs_parallel()
+            else:
+                self.verify_specs()
+            
+            split_score = self.set_split_score(self.init_prop, self.cur_specs, inp_template=self.inp_template)
+            # Each spec should hold the prev lb and current lb
+            self.cur_specs, verified_specs = verifier_util.branch_unsolved(self.cur_specs, self.split, split_score=split_score,
+                                                                  inp_template=self.inp_template, args=self.args,
+                                                                  net=self.net, transformer=self.transformer)
+            # Update the tree size
+            self.tree_size += len(self.cur_specs)
+        
+        # Check final status and store results
+        self.check_verified_status()
+        self.store_final_tree()
+        
+        # Calculate tree size
+        tree_size = self.tree_size
+        if self.root_spec is not None:
+            tree_size = get_verified_spec(self.root_spec)
+        
+        return self.global_status, tree_size, self.node_visited, self.cur_lb
 
     def create_initial_specs(self, prop, unstable_relus):
         if is_relu_split(self.split):
@@ -275,6 +449,27 @@ class Analyzer_NDFS(AnalyzerBase):
             node_visited = bnb_analyzer.node_visited
             lb = bnb_analyzer.cur_lb
         return status, tree_size, node_visited, lb
+    
+     def run_analyzer_separate_labels(self, index, eps=1/255, mode="easy", n_classes=10):
+         """
+         Run analyzer with separate verification for each adversarial label.
+         Returns results for each adversarial label separately.
+         """
+         print('Using %s abstract domain for separate label verification (NDFS)' % self.args.domain)
+         index = int(index)
+         eps = float(eps)
+         props, inputs = verifier_util.get_specs(self.args.dataset, spec_type=self.args.spec_type, count=self.args.count, eps=eps, mode=mode)
+         property_obj = props[index]
+         # Get the first input clause (InputSpec) from the Property object
+         prop = property_obj.get_input_clause(0)
+         
+         # Create BnB analyzer instance
+         self.update_transformer(prop)
+         bnb_analyzer = BnB_NDFS(self.net, self.transformer, prop, self.args, self.template_store)
+         
+         # Run separate verification for each adversarial label
+         separate_results = bnb_analyzer.verify_all_labels_separately(n_classes)
+         return separate_results
         
 class BnB_NDFS(BnBBase):
     def __init__(self, net, transformer, init_prop, args, template_store, print_result=False):
@@ -329,6 +524,70 @@ class BnB_NDFS(BnBBase):
                 max_reward = reward
         # self.cur_specs.pop(max_index)
         return max_item, max_index
+    
+    def run_verification(self):
+        """Run the verification process and return results (NDFS version)."""
+        # Check if already solved
+        if self.global_status != Status.UNKNOWN:
+            return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+        
+        # Get unstable relus
+        unstable_relus = self.get_unstable_relus()
+        
+        # Create initial specs
+        self.cur_specs = self.create_initial_specs(self.init_prop, unstable_relus)
+        self.tree_size = len(self.cur_specs)
+        
+        # Main NDFS branch-and-bound loop (same logic as NDFS run() method)
+        while self.continue_search():
+            
+            spec, index = self.maxG_order()
+            if spec.parent is None:
+                self.update_transformer(spec.input_spec, relu_spec=spec.relu_spec)
+
+                # Transformer is updated with new mask
+                status, lb = self.verify_node(self.transformer, spec.input_spec)
+                # self.update_cur_lb(lb)
+               
+                spec.update_status(status, lb)
+                if status == Status.ADV_EXAMPLE:
+                    self.global_status = status
+                    self.check_verified_status()
+                    return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+            if spec.lb < 0:
+                self.update_transformer(spec.input_spec, relu_spec=spec.relu_spec)
+                split_score = self.set_split_score(self.init_prop, self.cur_specs, inp_template=self.inp_template)
+                spec_a, spec_b = verifier_util.split_spec(spec=spec, split_type=self.split, split_score=split_score,
+                                                                    inp_template=self.inp_template, args=self.args,
+                                                                    net=self.net, transformer=self.transformer)
+                for i in [spec_a, spec_b]:
+                    self.update_transformer(i.input_spec, relu_spec=i.relu_spec)
+                    status, lb = self.verify_node(self.transformer, i.input_spec)
+                    # if lb == None:
+                    #     continue
+                    self.update_cur_lb(lb)
+                    i.update_status(status, lb)
+                    if status == Status.ADV_EXAMPLE:
+                        self.global_status = status
+                        self.check_verified_status()
+                        self.store_final_tree()
+                        return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+                    else:
+                        if status == Status.UNKNOWN:
+                            self.cur_specs.append(i)
+            self.cur_specs.pop(index)
+        
+        # Check final status and store results
+        self.check_verified_status()
+        self.store_final_tree()
+        
+        # Calculate tree size
+        tree_size = self.tree_size
+        if self.root_spec is not None:
+            tree_size = get_verified_spec(self.root_spec)
+        
+        return self.global_status, tree_size, self.node_visited, self.cur_lb
+    
     def run(self):
 
         """
@@ -420,6 +679,27 @@ class Analyzer_annealing(Analyzer_NDFS):
             node_visited = bnb_analyzer.node_visited
             lb = bnb_analyzer.cur_lb
         return status, tree_size, node_visited, lb
+    
+    def run_analyzer_separate_labels(self, index, eps=1/255, mode="easy", n_classes=10):
+        """
+        Run analyzer with separate verification for each adversarial label.
+        Returns results for each adversarial label separately.
+        """
+        print('Using %s abstract domain for separate label verification (Annealing)' % self.args.domain)
+        index = int(index)
+        eps = float(eps)
+        props, inputs = verifier_util.get_specs(self.args.dataset, spec_type=self.args.spec_type, count=self.args.count, eps=eps, mode=mode)
+        property_obj = props[index]
+        # Get the first input clause (InputSpec) from the Property object
+        prop = property_obj.get_input_clause(0)
+        
+        # Create BnB analyzer instance
+        self.update_transformer(prop)
+        bnb_analyzer = BnB_balance(self.net, self.transformer, prop, self.args, self.template_store, alpha_config=self.alpha_config)
+        
+        # Run separate verification for each adversarial label
+        separate_results = bnb_analyzer.verify_all_labels_separately(n_classes)
+        return separate_results
  
 class BnB_balance(BnB_NDFS):  
      
@@ -458,6 +738,68 @@ class BnB_balance(BnB_NDFS):
         if max_item in self.cur_specs:
             self.cur_specs.remove(max_item)
         return max_item
+    
+    def run_verification(self):
+        """Run the verification process and return results (Balance/SA version)."""
+        # Check if already solved
+        if self.global_status != Status.UNKNOWN:
+            return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+        
+        # Get unstable relus
+        unstable_relus = self.get_unstable_relus()
+        
+        # Create initial specs
+        self.cur_specs = self.create_initial_specs(self.init_prop, unstable_relus)
+        self.tree_size = len(self.cur_specs)
+        
+        # Main Balance/SA branch-and-bound loop (same logic as Balance run() method)
+        while self.continue_search():
+            self.T = self.alpha * self.T
+            spec = self.SA_order(self.T)
+            if spec.parent is None:
+                self.update_transformer(spec.input_spec, relu_spec=spec.relu_spec)
+
+                # Transformer is updated with new mask
+                status, lb = self.verify_node(self.transformer, spec.input_spec)
+                self.mini_bound = lb
+                # self.update_cur_lb(lb)
+                spec.update_status(status, lb)
+                if status == Status.ADV_EXAMPLE:
+                    self.global_status = status
+                    self.check_verified_status()
+                    return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+            if spec.lb < 0:
+                self.update_transformer(spec.input_spec, relu_spec=spec.relu_spec)
+                split_score = self.set_split_score(self.init_prop, self.cur_specs, inp_template=self.inp_template)
+                spec_a, spec_b = verifier_util.split_spec(spec=spec, split_type=self.split, split_score=split_score,
+                                                                    inp_template=self.inp_template, args=self.args,
+                                                                    net=self.net, transformer=self.transformer)
+                for i in [spec_a, spec_b]:
+                    self.update_transformer(i.input_spec, relu_spec=i.relu_spec)
+                    status, lb = self.verify_node(self.transformer, i.input_spec)
+                    # if lb == None:
+                    #     continue
+                    self.update_cur_lb(lb)
+                    i.update_status(status, lb) ## TODO ： backpopagation
+                    if status == Status.ADV_EXAMPLE:
+                        self.global_status = status
+                        self.check_verified_status()
+                        self.store_final_tree()
+                        return self.global_status, self.tree_size, self.node_visited, self.cur_lb
+                    else:
+                        if status == Status.UNKNOWN:
+                            self.cur_specs.append(i)
+            
+        # Check final status and store results
+        self.check_verified_status()
+        self.store_final_tree()
+        
+        # Calculate tree size
+        tree_size = self.tree_size
+        if self.root_spec is not None:
+            tree_size = get_verified_spec(self.root_spec)
+        
+        return self.global_status, tree_size, self.node_visited, self.cur_lb
     
     def run(self):
 

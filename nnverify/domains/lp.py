@@ -198,9 +198,12 @@ class LPTransformer:
         model_update_end_time = time.time()
         config.write_log('Time taken to update the model: ' + str(model_update_end_time-model_update_start_time))
 
-    def compute_lb(self, complete=True):
+    def compute_lb(self, complete=True, adv_label=None, return_all_bounds=False):
         """
-        Compute a lower bound of f(x)_{true_label}-f(x)_{adv_label} for all possible values of the adversarial label.
+        Compute a lower bound of f(x)_{true_label}-f(x)_{adv_label}.
+        
+        @param return_all_bounds: If True, returns bounds for all labels separately instead of just the global minimum
+        
         There are three outcomes from this function.
         @return is_feasible
         1. If the encoding of the constraint is infeasible then  returns is_feasible=True, and other returns are None.
@@ -212,44 +215,106 @@ class LPTransformer:
         example @adv_ex_candidate. However, this counter example can be spurious counter example in concrete domain.
         We only return non-None value if the counter-example is true.
 
-        @return global_lb
-        3. If the optimal value of each optimized variable is >=0 we have verified the property. In that case adv_ex is
-        None
+        @return global_lb or all_bounds
+        3. If return_all_bounds=False: returns the global minimum lower bound
+           If return_all_bounds=True: returns a list of bounds for each adversarial label
 
         """
         lb_start_time = time.time()
 
+        # Check if we have a targeted adversarial label from the property
+        targeted_adv_label = None
+        if hasattr(self.prop, 'out_constr') and hasattr(self.prop.out_constr, 'adv_label'):
+            targeted_adv_label = self.prop.out_constr.adv_label
+        
+        # Use passed adv_label parameter if provided, otherwise use property's adv_label
+        if adv_label is not None:
+            targeted_adv_label = adv_label
+
         # global_lb is lowest lower bound from all label
         global_lb = None
+        all_bounds = []  # Store bounds for each label separately
 
-        for i in range(len(self.gurobi_vars[-1])):
-            optimize_var = self.gurobi_vars[-1][i]
-
+        # If we have a targeted adversarial label and the output constraint matrix has only 1 column,
+        # we only need to optimize for that single constraint
+        if targeted_adv_label is not None and self.prop.output_constr_mat().shape[1] == 1:
+            # Only optimize for the single targeted constraint
+            optimize_var = self.gurobi_vars[-1][0]
+            
             # If previously computed lb >= 0 then we do not need to optimize this
-            unsplit_lb = self.lower_bounds[-1][i]
+            unsplit_lb = self.lower_bounds[-1][0]
             if unsplit_lb >= 0:
-                if global_lb is None:
-                    global_lb = unsplit_lb
-                continue
+                global_lb = unsplit_lb
+                all_bounds = [{'label_idx': 0, 'adv_label': targeted_adv_label, 'bound': unsplit_lb, 'optimized': False}]
+            else:
+                adv_ex_candidate, is_feasible = self.optimize_gurobi_model(optimize_var)
 
-            adv_ex_candidate, is_feasible = self.optimize_gurobi_model(optimize_var)
+                # Immediate return if the LP is not possible
+                if not is_feasible:
+                    return None, False, None
+                elif nnverify.attack.check_adversarial(adv_ex_candidate, self.net, self.prop):
+                    return None, True, adv_ex_candidate
 
-            # Immediate return if the LP is not possible
-            if not is_feasible:
-                return None, False, None
-            elif nnverify.attack.check_adversarial(adv_ex_candidate, self.net, self.prop):
-                return None, True, adv_ex_candidate
+                global_lb = torch.tensor(optimize_var.X)
+                all_bounds = [{'label_idx': 0, 'adv_label': targeted_adv_label, 'bound': global_lb, 'optimized': True}]
+                config.write_log("Initial lower bound: " + str(optimize_var.lb))
+                config.write_log("LP optimized lower bound: " + str(global_lb))
+                config.write_log("Targeted adversarial label: " + str(targeted_adv_label))
+        else:
+            # Iterate over all output variables and collect results for each
+            for i in range(len(self.gurobi_vars[-1])):
+                optimize_var = self.gurobi_vars[-1][i]
 
-            cur_lb = torch.tensor(optimize_var.X)
-            config.write_log("Initial lower bound: " + str(optimize_var.lb))
-            config.write_log("LP optimized lower bound: " + str(cur_lb))
-            config.write_log(str(i) + ' : ' + str(cur_lb))
+                # If previously computed lb >= 0 then we do not need to optimize this
+                unsplit_lb = self.lower_bounds[-1][i]
+                if unsplit_lb >= 0:
+                    if global_lb is None:
+                        global_lb = unsplit_lb
+                    else:
+                        global_lb = min(global_lb, unsplit_lb)
+                    
+                    # Store result for this label
+                    all_bounds.append({
+                        'label_idx': i, 
+                        'bound': unsplit_lb, 
+                        'optimized': False,
+                        'initial_bound': unsplit_lb
+                    })
+                    config.write_log(f"Label {i}: Using initial bound {unsplit_lb} (>= 0, no optimization needed)")
+                    continue
 
-            if global_lb is None or cur_lb < global_lb:
-                global_lb = cur_lb
+                adv_ex_candidate, is_feasible = self.optimize_gurobi_model(optimize_var)
+
+                # Immediate return if the LP is not possible
+                if not is_feasible:
+                    return None, False, None
+                elif nnverify.attack.check_adversarial(adv_ex_candidate, self.net, self.prop):
+                    return None, True, adv_ex_candidate
+
+                cur_lb = torch.tensor(optimize_var.X)
+                
+                # Store result for this label
+                all_bounds.append({
+                    'label_idx': i, 
+                    'bound': cur_lb, 
+                    'optimized': True,
+                    'initial_bound': optimize_var.lb
+                })
+                
+                config.write_log("Initial lower bound: " + str(optimize_var.lb))
+                config.write_log("LP optimized lower bound: " + str(cur_lb))
+                config.write_log(f"Label {i}: {cur_lb}")
+
+                if global_lb is None or cur_lb < global_lb:
+                    global_lb = cur_lb
 
         config.write_log('Time taken for lb computation: ' + str(time.time() - lb_start_time))
-        return global_lb, True, None
+        
+        # Return results based on what was requested
+        if return_all_bounds:
+            return all_bounds, True, None
+        else:
+            return global_lb, True, None
 
     def optimize_gurobi_model(self, optimize_var):
         # This should not be necessary
@@ -556,8 +621,7 @@ class LPTransformer:
         Returns the box bounds obtained from propagating input bounds through the layer.
         """
         transformers = BoxTransformer(self.prop)
-        fb = forward_box
-        return self.get_domain_bounds(fb, layers, relu_mask, transformers)
+        return self.get_domain_bounds(layers, relu_mask, transformers)
 
     def get_zono_bounds(self, layers, relu_mask):
         """

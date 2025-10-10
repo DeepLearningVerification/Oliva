@@ -14,6 +14,7 @@ class Constraint:
     def __init__(self, constr_type, is_conjunctive=True, constr_mat=None, label=None, adv_label=None):
         self.constr_type = constr_type
         self.label = label
+        self.adv_label = adv_label
         self.constr_mat = constr_mat
         self.is_conjunctive = is_conjunctive
 
